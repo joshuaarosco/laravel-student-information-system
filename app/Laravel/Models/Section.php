@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Laravel\Models;
+use App\Laravel\Models\ClassList;
 
 use App\Laravel\Traits\DateFormatterTrait;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -31,5 +32,11 @@ class Section extends Authenticatable
 
     public function adviser(){
         return $this->belongsTo("App\Laravel\Models\User","adviser_id","id");
+    }
+
+    public function number_of_students($id){
+        $class = ClassList::where('section_id',$id)->first();
+        
+        return $class;
     }
 }

@@ -3,7 +3,7 @@
 @section('content')
 <div class="be-content">
         <div class="page-head">
-            <h2 class="page-head-title">List of Sections in "{{$subject->subject_title}}"</h2>
+            <h2 class="page-head-title"><strong>{{$section->section_name}}</strong></h2>
             <ol class="breadcrumb page-head-nav">
                 <li>
                     <a href="{{route('backoffice.dashboard')}}">Home</a>
@@ -17,39 +17,27 @@
                     @include('backoffice._components.notification')
                     <div class="panel panel-default panel-table">
                         <div class="panel-heading">
-                            {{$page_title}}
-                            <div class="tools dropdown">
-                                {{-- <a href="{{route('backoffice.'.$route_file.'.create')}}"><span class="icon mdi mdi-plus"></span></a> --}}
-                            </div>
+                            Students of <strong>{{$section->section_name}}</strong>
                         </div>
                         <div class="panel-body">
                             <table class="table table-striped table-hover table-fw-widget" id="table1">
                                 <thead>
                                     <tr>
                                         <th style="width: 5%;">#</th>
-                                        <th>School Year</th>
-                                        <th>Section Name</th>
-                                        <th>Adviser</th>
-                                        <th class="actions"></th>
+                                        <th>LRN</th>
+                                        <th>Name</th>
+                                        <th>Contact Number</th>
+                                        <th>Address</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($sections as $index => $info)
+                                	@foreach($students as $index => $info)
                                     <tr class="odd gradeX">
                                         <td>{{$index+1}}</td>
-                                        <td><strong>{{$info->school_year}}</strong></td>
-                                        <td>{{$info->section_name}}</td>
-                                        <td>{{"{$info->adviser->lname}, {$info->adviser->fname}"}}</td>
-                                        <td class="actions">
-                                            <div class="btn-group btn-hspace">
-                                                <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="icon-dropdown mdi mdi-chevron-down"></span></button>
-                                                <ul role="menu" class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="{{route('backoffice.'.$route_file.'.encode',['section_id' => $info->id, 'subject_id' => $subject->id])}}">Encode Grade</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
+                                        <td><strong>{{$info->lrn}}</strong></td>
+                                        <td>{{"{$info->lname}, {$info->fname}, {$info->mname}"}}</td>
+                                        <td>{{$info->contact_number? : '---'}}</td>
+                                        <td>{{$info->address? : '---'}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

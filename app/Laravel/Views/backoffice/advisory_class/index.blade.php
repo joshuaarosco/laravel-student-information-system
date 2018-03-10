@@ -3,7 +3,7 @@
 @section('content')
 <div class="be-content">
         <div class="page-head">
-            <h2 class="page-head-title">List of Sections in "{{$subject->subject_title}}"</h2>
+            <h2 class="page-head-title">List of {{$page_title}}</h2>
             <ol class="breadcrumb page-head-nav">
                 <li>
                     <a href="{{route('backoffice.dashboard')}}">Home</a>
@@ -17,7 +17,7 @@
                     @include('backoffice._components.notification')
                     <div class="panel panel-default panel-table">
                         <div class="panel-heading">
-                            {{$page_title}}
+                            My {{$page_title}}
                             <div class="tools dropdown">
                                 {{-- <a href="{{route('backoffice.'.$route_file.'.create')}}"><span class="icon mdi mdi-plus"></span></a> --}}
                             </div>
@@ -28,27 +28,29 @@
                                     <tr>
                                         <th style="width: 5%;">#</th>
                                         <th>School Year</th>
-                                        <th>Section Name</th>
-                                        <th>Adviser</th>
-                                        <th class="actions"></th>
+                                        <th>Subject Title</th>
+                                        <th>Number Of Students</th>
+                                        <th class="actions" style="width: 10%;"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($sections as $index => $info)
+                                	@foreach($advisory_classes as $index => $info)
                                     <tr class="odd gradeX">
-                                        <td>{{$index+1}}</td>
-                                        <td><strong>{{$info->school_year}}</strong></td>
-                                        <td>{{$info->section_name}}</td>
-                                        <td>{{"{$info->adviser->lname}, {$info->adviser->fname}"}}</td>
+                                        <td>{{ $index+1 }}</td>
+                                        <td><strong>{{ $info->school_year }}</strong></td>
+                                        <td>{{ $info->section_name }}</td>
+                                        <td>{{ $info->number_of_students($info->id)? count(explode(', ',$info->number_of_students($info->id)->student_ids)) : '---'}}</td>
                                         <td class="actions">
-                                            <div class="btn-group btn-hspace">
-                                                <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="icon-dropdown mdi mdi-chevron-down"></span></button>
+                                            @if($info->number_of_students($info->id))
+                                           <div class="btn-group btn-hspace">
+                                              <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="icon-dropdown mdi mdi-chevron-down"></span></button>
                                                 <ul role="menu" class="dropdown-menu pull-right">
                                                     <li>
-                                                        <a href="{{route('backoffice.'.$route_file.'.encode',['section_id' => $info->id, 'subject_id' => $subject->id])}}">Encode Grade</a>
+                                                        <a href="{{route('backoffice.'.$route_file.'.students',$info->id)}}">View Students</a>
                                                     </li>
                                                 </ul>
                                             </div>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach

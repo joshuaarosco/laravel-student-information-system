@@ -102,6 +102,7 @@ Route::group(
 
 			$this->group(['prefix' => "advisory-class", 'as' => "advisory_class."], function () {
 				$this->get('/',['as' => "index", 'uses' => "AdvisoryClassController@index"]);
+				$this->get('students/{id}',['as' => "students", 'uses' => "AdvisoryClassController@students"]);
 			});
 
 		});

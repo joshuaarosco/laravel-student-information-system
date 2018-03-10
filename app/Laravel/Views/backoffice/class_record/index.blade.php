@@ -29,7 +29,6 @@
                                         <th style="width: 5%;">#</th>
                                         <th>School Year</th>
                                         <th>Subject Title</th>
-                                        <th>Updated At</th>
                                         <th class="actions"></th>
                                     </tr>
                                 </thead>
@@ -39,16 +38,12 @@
                                         <td>{{ $index+1 }}</td>
                                         <td><strong>{{ $info->school_year }}</strong></td>
                                         <td>{{ $info->subject_title }}</td>
-                                        <td>{{Helper::date_format($info->updated_at,'F d, Y')}}</td>
                                         <td class="actions">
                                         	<div class="btn-group btn-hspace">
                                         		<button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="icon-dropdown mdi mdi-chevron-down"></span></button>
                                         		<ul role="menu" class="dropdown-menu pull-right">
                                         			<li>
                                         				<a href="{{route('backoffice.'.$route_file.'.section',$info->id)}}">View Sections</a>
-                                        			</li>
-                                        			<li>
-                                        				{{-- <a href="#" data-toggle="modal" data-url="{{route('backoffice.'.$route_file.'.destroy',[$info->id])}}" data-target="#md-footer-danger" class="action-delete">Delete</a> --}}
                                         			</li>
                                         		</ul>
                                         	</div>

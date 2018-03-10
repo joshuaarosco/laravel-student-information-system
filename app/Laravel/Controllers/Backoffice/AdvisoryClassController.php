@@ -6,8 +6,10 @@ namespace App\Laravel\Controllers\Backoffice;
 *
 * Models used for this controller
 */
-use App\Laravel\Models\Article;
 use App\Laravel\Models\User;
+use App\Laravel\Models\Student;
+use App\Laravel\Models\Section;
+use App\Laravel\Models\ClassList;
 
 /*
 *
@@ -19,7 +21,7 @@ use App\Laravel\Models\User;
 *
 * Classes used for this controller
 */
-use Helper, Carbon, Session, Str, DB;
+use Helper, Carbon, Session, Str, DB, Auth;
 
 class AdvisoryClassController extends Controller{
 
@@ -33,11 +35,33 @@ class AdvisoryClassController extends Controller{
 		$this->data = [];
 		parent::__construct();
 		array_merge($this->data, parent::get_data());
+		$this->data['page_title'] = "Advisory Classes";
+		$this->data['page_description'] = "This is the general information about ".$this->data['page_title'].".";
+		$this->data['route_file'] = "advisory_class";
 	}
 
 	public function index () {
-		dd('im here');
-		return view('backoffice.class_record.index',$this->data);
+		$advisory_classes = Section::where('adviser_id',Auth::user()->id)->orderBy('school_year')->get();
+
+		$this->data['advisory_classes'] = $advisory_classes;
+		return view('backoffice.advisory_class.index',$this->data);
+	}
+
+	public function students($id){
+		$section = Section::find($id);
+		$class = ClassList::where('section_id',$id)->first();
+
+		if(!$class){
+			Session::flash('notification-status','failed');
+			Session::flash('notification-msg',"Class not found.");
+			return redirect()->back();
+		}
+
+		$student_ids = explode(', ',$class->student_ids);
+
+		$this->data['students'] = Student::whereIn('id',$student_ids)->orderBy('lname')->get();
+		$this->data['section'] = $section;
+		return view('backoffice.advisory_class.students',$this->data);
 	}
 
 }
