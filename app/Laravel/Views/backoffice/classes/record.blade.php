@@ -45,7 +45,7 @@
                                         @foreach($subjects as $data => $subject)
                                         <td class="text-center">
                                             <?php array_push($grade,$subject->class_record($class->id,$subject->id,$student->id)->average);?>
-                                            <a href="#" data-toggle="modal" data-target="#edit-grades-{{$subject->subject_title}}">{{round($subject->class_record($class->id,$subject->id,$student->id)->average,2)}}</a>
+                                            <a href="#" data-toggle="modal" data-target="#edit-grades-{{$subject->id}}">{{round($subject->class_record($class->id,$subject->id,$student->id)->average,2)}}</a>
                                         </td>
                                         @endforeach
                                         <td class="text-center"><strong>{{round(array_sum($grade)/$subjects->count(),2)}}</strong></td>
@@ -84,7 +84,7 @@
 </div>
 
 @foreach($subjects as $data => $subject)
-<div id="edit-grades-{{$subject->subject_title}}" tabindex="-2" role="dialog" class="modal fade">
+<div id="edit-grades-{{$subject->id}}" tabindex="-2" role="dialog" class="modal fade">
     <div class="modal-dialog" style="width: 95%!important;">
         <div class="modal-content" style="max-width: 100%!important;">
             <div class="modal-header">
