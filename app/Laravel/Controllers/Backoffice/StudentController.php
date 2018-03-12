@@ -5,6 +5,7 @@
 * Models used for this controller
 */
 use App\Laravel\Models\Student;
+use App\Laravel\Models\StudentInformation;
 
 /**
 *
@@ -35,6 +36,7 @@ class StudentController extends Controller{
 		$this->data['page_description'] = "This is the general information about ".$this->data['page_title'].".";
 		$this->data['route_file'] = "students";
 		$this->data['featureds'] = ['no'=>"No",'yes'=>"Yes"];
+		$this->data['gender'] = ['' => "Choose Gender" ,'male' => "Male",'female' => "Female"];
 	}
 
 	public function index () {
@@ -59,6 +61,7 @@ class StudentController extends Controller{
 			}
 
 			if($new_students->save()) {
+				$this->student_additional_information($new_students->id,$request);
 				Session::flash('notification-status','success');
 				Session::flash('notification-msg',"New students has been added.");
 				return redirect()->route('backoffice.'.$this->data['route_file'].'.index');
@@ -77,6 +80,7 @@ class StudentController extends Controller{
 
 	public function edit ($id = NULL) {
 		$students = Student::find($id);
+		$student_additional_information = StudentInformation::where('student_id',$id)->first();
 
 		if (!$students) {
 			Session::flash('notification-status',"failed");
@@ -85,6 +89,7 @@ class StudentController extends Controller{
 		}
 
 		$this->data['student'] = $students;
+		$this->data['additional_information'] = $student_additional_information;
 		return view('backoffice.'.$this->data['route_file'].'.edit',$this->data);
 	}
 
@@ -120,6 +125,7 @@ class StudentController extends Controller{
 			}
 
 			if($students->save()) {
+				$this->update_student_additional_information($students->id,$request);
 				Session::flash('notification-status','success');
 				Session::flash('notification-msg',"A students has been updated.");
 				return redirect()->route('backoffice.'.$this->data['route_file'].'.index');
@@ -169,6 +175,19 @@ class StudentController extends Controller{
 			Session::flash('notification-msg',$e->getMessage());
 			return redirect()->back();
 		}
+	}
+
+	public function student_additional_information($id,$request){
+		$student_information = new StudentInformation;
+		$student_information->fill($request->all());
+		$student_information->student_id = $id;
+		$student_information->save();
+	}
+
+	public function update_student_additional_information($id,$request){
+		$student_information = StudentInformation::find($id);
+		$student_information->fill($request->all());
+		$student_information->save();
 	}
 
 }

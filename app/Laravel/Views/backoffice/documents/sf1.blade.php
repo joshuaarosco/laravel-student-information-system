@@ -19,7 +19,7 @@
                         <div class="panel-heading">
                             {{$page_title}}
                             <div class="tools dropdown">
-                                <a href="{{route('backoffice.'.$route_file.'.create')}}"><span class="icon mdi mdi-plus"></span></a>
+                                {{-- <a href="{{route('backoffice.'.$route_file.'.create')}}"><span class="icon mdi mdi-plus"></span></a> --}}
                             </div>
                         </div>
                         <div class="panel-body">
@@ -29,30 +29,18 @@
                                         <th style="width: 5%;">#</th>
                                         <th>LRN</th>
                                         <th>Name</th>
-                                        <th>Updated At</th>
-                                        <th class="actions"></th>
+                                        <th>Guardian Name</th>
+                                        <th>Contact Number</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                	@foreach($students as $index => $info)
+                                    @foreach($students as $index => $info)
                                     <tr class="odd gradeX">
                                         <td>{{$index+1}}</td>
                                         <td><strong>{{$info->lrn}}</strong></td>
                                         <td>{{"{$info->lname}, {$info->fname}, {$info->mname}"}}</td>
-                                        <td>{{Helper::date_format($info->updated_at,'F d, Y')}}</td>
-                                        <td class="actions">
-                                        	<div class="btn-group btn-hspace">
-                                        		<button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="icon-dropdown mdi mdi-chevron-down"></span></button>
-                                        		<ul role="menu" class="dropdown-menu pull-right">
-                                        			<li>
-                                        				<a href="{{route('backoffice.'.$route_file.'.edit',$info->id)}}">Edit</a>
-                                        			</li>
-                                        			<li>
-                                        				<a href="#" data-toggle="modal" data-url="{{route('backoffice.'.$route_file.'.destroy',[$info->id])}}" data-target="#md-footer-danger" class="action-delete">Delete</a>
-                                        			</li>
-                                        		</ul>
-                                        	</div>
-                                        </td>
+                                        <td>{{$info->additional_info->guardian_name}}</td>
+                                        <td>{{$info->contact_number}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

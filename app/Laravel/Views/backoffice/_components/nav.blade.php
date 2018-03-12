@@ -52,7 +52,7 @@
                             <a href="#"><i class="icon fa fa-users"></i><span>Classes</span></a>
                             <ul class="sub-menu">
                                 <li class="{{ active_class(if_route(['backoffice.classes.index',]), 'active open') }}">
-                                    <a href="{{route('backoffice.classes.index')}}">All Records</a>
+                                    <a href="{{route('backoffice.classes.index')}}">Year Level</a>
                                 </li>
                                 <li class="{{ active_class(if_route(['backoffice.classes.create',]), 'active open') }}">
                                     <a href="{{route('backoffice.classes.create')}}">Create New</a>
@@ -72,6 +72,12 @@
                             </ul>
                         </li>
                         
+                        <li class="divider">School Documents</li>
+                        
+                        <li class="{{ active_class(if_route(['backoffice.documents.sf1']), 'active') }}">
+                            <a href="{{route('backoffice.documents.sf1')}}"><i class="icon fa fa-file-text"></i><span>School Form 1 (SF1)</span></a>
+                        </li>
+        
                         <li class="divider">User Management</li>
                         <li class="parent {{ active_class(if_route(['backoffice.teachers.index','backoffice.teachers.create','backoffice.teachers.edit','backoffice.teachers.destroy',]), 'active open') }}">
                             <a href="#"><i class="icon fa fa-user-secret"></i><span>Faculties</span></a>

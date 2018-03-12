@@ -105,6 +105,10 @@ Route::group(
 				$this->get('students/{id}',['as' => "students", 'uses' => "AdvisoryClassController@students"]);
 			});
 
+			$this->group(['prefix' => "documents", 'as' => "documents."], function () {
+				$this->get('sf1',['as' => "sf1", 'uses' => "DocumentsController@sf1"]);
+			});
+
 		});
 	}
 );
