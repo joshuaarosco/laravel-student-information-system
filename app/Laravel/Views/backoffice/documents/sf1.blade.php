@@ -39,7 +39,7 @@
                                         <td>{{$index+1}}</td>
                                         <td><strong>{{$info->lrn}}</strong></td>
                                         <td>{{"{$info->lname}, {$info->fname}, {$info->mname}"}}</td>
-                                        <td>{{$info->additional_info->guardian_name}}</td>
+                                        <td>{{$info->additional_info? $info->additional_info->guardian_name:'---'}}</td>
                                         <td>{{$info->contact_number}}</td>
                                     </tr>
                                     @endforeach
