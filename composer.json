@@ -8,6 +8,7 @@
         "php": ">=5.6.4",
         "beberlei/azure-blob-storage": "*",
         "brozot/laravel-fcm": "^1.2",
+        "dompdf/dompdf": "^0.8.2",
         "dusterio/link-preview": "^1.2",
         "enniel/laravel-fcm-notification-channel": "^0.0.1",
         "fabpot/goutte": "^3.2",
@@ -19,12 +20,12 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.2",
         "league/fractal": "0.12.*@dev",
+        "maddhatter/laravel-fullcalendar": "^1.2",
+        "milon/barcode": "^5.2",
         "propaganistas/laravel-phone": "^2.8",
         "pusher/pusher-php-server": "^2.6",
         "squigg/azure-queue-laravel": "5.4.*",
-        "milon/barcode": "^5.2",
-        "tymon/jwt-auth": "0.5.*",
-        "maddhatter/laravel-fullcalendar": "^1.2"
+        "tymon/jwt-auth": "0.5.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
