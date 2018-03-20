@@ -39,14 +39,15 @@
                                         <td><strong>{{ $info->school_year }}</strong></td>
                                         <td>{{ $info->subject_title }}</td>
                                         <td class="actions">
-                                        	<div class="btn-group btn-hspace">
+                                        	{{-- <div class="btn-group btn-hspace">
                                         		<button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="icon-dropdown mdi mdi-chevron-down"></span></button>
                                         		<ul role="menu" class="dropdown-menu pull-right">
                                         			<li>
-                                        				<a href="{{route('backoffice.'.$route_file.'.section',$info->id)}}">View Sections</a>
+                                        				
                                         			</li>
                                         		</ul>
-                                        	</div>
+                                        	</div> --}}
+                                            <a class="btn btn-primary" href="{{route('backoffice.'.$route_file.'.section',$info->id)}}">View Sections</a>
                                         </td>
                                     </tr>
                                     @endforeach

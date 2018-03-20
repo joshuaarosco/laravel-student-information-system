@@ -49,7 +49,7 @@
                                                         <a href="{{route('backoffice.'.$route_file.'.students',$info->id)}}">View Students</a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{route('backoffice.'.$route_file.'.students',$info->id)}}">View Grades</a>
+                                                        <a href="{{route('backoffice.'.$route_file.'.grades',$info->id)}}">View Grades</a>
                                                     </li>
                                                 </ul>
                                             </div>

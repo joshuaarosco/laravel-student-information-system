@@ -9,6 +9,7 @@ namespace App\Laravel\Controllers\Backoffice;
 use App\Laravel\Models\User;
 use App\Laravel\Models\Student;
 use App\Laravel\Models\Section;
+use App\Laravel\Models\Subject;
 use App\Laravel\Models\ClassList;
 
 /*
@@ -61,6 +62,27 @@ class AdvisoryClassController extends Controller{
 		$this->data['students'] = Student::whereIn('id',$student_ids)->orderBy('lname')->get();
 		$this->data['section'] = $section;
 		return view('backoffice.advisory_class.students',$this->data);
+	}
+
+	public function grades($id){
+		$section = Section::find($id);
+		$class = ClassList::where('section_id',$id)->first();
+
+		if(!$class){
+			Session::flash('notification-status','failed');
+			Session::flash('notification-msg',"Class not found.");
+			return redirect()->back();
+		}
+
+		$student_ids = explode(', ',$class->student_ids);
+		$exploded_subject_ids = explode(', ',$class->subject_ids);
+
+		$this->data['students'] = Student::whereIn('id',$student_ids)->orderBy('lname')->get();
+		$this->data['subjects'] = Subject::whereIn('id',$exploded_subject_ids)->get();
+
+		$this->data['class'] = $class;
+		$this->data['section'] = $section;
+		return view('backoffice.advisory_class.grades',$this->data);
 	}
 
 	public function student_info($id = 0){
