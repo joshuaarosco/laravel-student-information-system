@@ -189,6 +189,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Milon\Barcode\BarcodeServiceProvider::class,
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         // Core\ServiceProvider::class,
         // Api\ServiceProvider::class,
@@ -265,6 +266,7 @@ return [
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
         
         'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     
     ],
 

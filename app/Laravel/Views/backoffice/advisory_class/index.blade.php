@@ -28,7 +28,7 @@
                                     <tr>
                                         <th style="width: 5%;">#</th>
                                         <th>School Year</th>
-                                        <th>Subject Title</th>
+                                        <th>Section</th>
                                         <th>Number Of Students</th>
                                         <th class="actions" style="width: 10%;"></th>
                                     </tr>
@@ -47,6 +47,9 @@
                                                 <ul role="menu" class="dropdown-menu pull-right">
                                                     <li>
                                                         <a href="{{route('backoffice.'.$route_file.'.students',$info->id)}}">View Students</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{route('backoffice.'.$route_file.'.students',$info->id)}}">View Grades</a>
                                                     </li>
                                                 </ul>
                                             </div>

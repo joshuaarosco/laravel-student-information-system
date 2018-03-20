@@ -73,10 +73,17 @@
                         </li>
                         
                         <li class="divider">School Documents</li>
-                        
-                        <li class="{{ active_class(if_route(['backoffice.documents.sf1']), 'active') }}">
-                            <a href="{{route('backoffice.documents.sf1')}}"><i class="icon fa fa-file-text"></i><span>School Form 1 (SF1)</span></a>
+
+                        <li class="{{ active_class(if_route(['backoffice.documents.generate_sf1']), 'active') }}">
+                            <a href="{{route('backoffice.documents.generate_sf1')}}"><i class="icon fa fa-file-text-o"></i><span>School Form 1 (SF1)</span></a>
                         </li>
+                        {{-- <li class="{{ active_class(if_route(['backoffice.documents.sf1']), 'active') }}">
+                            <a href="{{route('backoffice.documents.sf1')}}"><i class="icon fa fa-file-text-o"></i><span>School Form 1 (SF1)</span></a>
+                        </li> --}}
+                        
+                        {{-- <li class="{{ active_class(if_route(['backoffice.documents.conso']), 'active') }}">
+                            <a href="{{route('backoffice.documents.conso')}}"><i class="icon fa fa-file-text-o"></i><span>Conso</span></a>
+                        </li> --}}
         
                         <li class="divider">User Management</li>
                         <li class="parent {{ active_class(if_route(['backoffice.teachers.index','backoffice.teachers.create','backoffice.teachers.edit','backoffice.teachers.destroy',]), 'active open') }}">

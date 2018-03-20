@@ -21,7 +21,7 @@ use App\Laravel\Models\ClassList;
 *
 * Classes used for this controller
 */
-use Helper, Carbon, Session, Str, DB, Auth;
+use Helper, Carbon, Session, Str, DB, Auth, PDF;
 
 class AdvisoryClassController extends Controller{
 
@@ -62,6 +62,13 @@ class AdvisoryClassController extends Controller{
 		$this->data['students'] = Student::whereIn('id',$student_ids)->orderBy('lname')->get();
 		$this->data['section'] = $section;
 		return view('backoffice.advisory_class.students',$this->data);
+	}
+
+	public function student_info($id = 0){
+		$this->data['student'] = Student::find($id);
+
+		$pdf = PDF::loadView('dompdf.stud_info', $this->data);
+		return $pdf->stream('dompdf.stud_info');
 	}
 
 }

@@ -21,7 +21,7 @@ use App\Laravel\Models\ClassList;
 *
 * Classes used for this controller
 */
-use Helper, Carbon, Session, Str, DB, Auth;
+use Helper, Carbon, Session, Str, DB, Auth, PDF;
 
 class DocumentsController extends Controller{
 
@@ -44,6 +44,23 @@ class DocumentsController extends Controller{
 		$this->data['page_title'] = "School Form 1 (SF1)";
 		$this->data['students'] = Student::orderBy('lname')->get();
 		return view('backoffice.documents.sf1',$this->data);
+	}
+
+	public function sf1_view ($id = 0) {
+		$this->data['student'] = Student::find($id);
+
+		$pdf = PDF::loadView('dompdf.stud_info', $this->data);
+		return $pdf->stream('dompdf.stud_info');
+	}
+
+	public function conso(){
+		$this->data['page_title'] = "Consolidated";
+		$this->data['students'] = Student::orderBy('lname')->get();
+		return view('backoffice.documents.conso',$this->data);
+	}
+
+	public function generate_sf1(){
+		
 	}
 
 }
