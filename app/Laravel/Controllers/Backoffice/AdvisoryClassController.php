@@ -58,7 +58,6 @@ class AdvisoryClassController extends Controller{
 		}
 
 		$student_ids = explode(', ',$class->student_ids);
-
 		$this->data['students'] = Student::whereIn('id',$student_ids)->orderBy('lname')->get();
 		$this->data['section'] = $section;
 		return view('backoffice.advisory_class.students',$this->data);
@@ -66,9 +65,7 @@ class AdvisoryClassController extends Controller{
 
 	public function student_info($id = 0){
 		$this->data['student'] = Student::find($id);
-
 		$pdf = PDF::loadView('dompdf.stud_info', $this->data);
 		return $pdf->stream('dompdf.stud_info');
 	}
-
 }

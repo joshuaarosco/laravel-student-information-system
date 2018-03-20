@@ -108,6 +108,7 @@ Route::group(
 
 			$this->group(['prefix' => "documents", 'as' => "documents."], function () {
 				$this->get('generate-sf1',['as' => "generate_sf1", 'uses' => "DocumentsController@generate_sf1"]);
+				$this->get('generate-conso',['as' => "generate_conso", 'uses' => "DocumentsController@generate_conso"]);
 				$this->get('sf1',['as' => "sf1", 'uses' => "DocumentsController@sf1"]);
 				$this->get('sf1/{id}',['as' => "sf1_view", 'uses' => "DocumentsController@sf1_view"]);
 				$this->get('conso',['as' => "conso", 'uses' => "DocumentsController@conso"]);

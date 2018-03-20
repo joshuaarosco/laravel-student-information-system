@@ -77,6 +77,10 @@
                         <li class="{{ active_class(if_route(['backoffice.documents.generate_sf1']), 'active') }}">
                             <a href="{{route('backoffice.documents.generate_sf1')}}"><i class="icon fa fa-file-text-o"></i><span>School Form 1 (SF1)</span></a>
                         </li>
+
+                        <li class="{{ active_class(if_route(['backoffice.documents.generate_conso']), 'active') }}">
+                            <a href="{{route('backoffice.documents.generate_conso')}}"><i class="icon fa fa-file-text-o"></i><span>Consolidated</span></a>
+                        </li>
                         {{-- <li class="{{ active_class(if_route(['backoffice.documents.sf1']), 'active') }}">
                             <a href="{{route('backoffice.documents.sf1')}}"><i class="icon fa fa-file-text-o"></i><span>School Form 1 (SF1)</span></a>
                         </li> --}}

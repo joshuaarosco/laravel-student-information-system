@@ -63,4 +63,8 @@ class DocumentsController extends Controller{
 		
 	}
 
+	public function generate_conso(){
+		
+	}
+
 }
