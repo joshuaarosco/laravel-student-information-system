@@ -43,25 +43,25 @@
 		</tr>
 		@foreach($students as $index => $student)
 		<tr>
-			<td>{{$index+1}}</td>
-			<td>{{$student->lrn}}</td>
-			<td>{{"{$student->lname}, {$student->fname} {$student->mname}"}}</td>
-			<td>{{$student->additional_info? $student->additional_info->gender:'---'}}</td>
-			<td>{{$student->additional_info? $student->additional_info->birthdate:'---'}}</td>
-			<td>{{$student->additional_info? $student->additional_info->age_of_first_friday_june:'---'}}</td>
-			<td>{{$student->additional_info? $student->additional_info->mother_tounge:'---'}}</td>
-			<td>{{$student->additional_info? $student->additional_info->ip:'---'}}</td>
-			<td>{{$student->additional_info? $student->additional_info->religion:'---'}}</td>
-			<td>{{$student->additional_info? $student->additional_info->house_street:'---'}}</td>
-			<td>{{$student->additional_info? $student->additional_info->barangay:'---'}}</td>
-			<td>{{$student->additional_info? $student->additional_info->municipality:'---'}}</td>
-			<td>{{$student->additional_info? $student->additional_info->province:'---'}}</td>
-			<td>{{$student->additional_info? $student->additional_info->fathers_name:'---'}}</td>
-			<td>{{$student->additional_info? $student->additional_info->mothers_name:'---'}}</td>
-			<td>{{$student->additional_info? $student->additional_info->guardian_name:'---'}}</td>
-			<td>{{$student->additional_info? $student->additional_info->relationship:'---'}}</td>
-			<td>{{$student->contact_number}}</td>
-			<td>{{$student->additional_info? $student->additional_info->remarks:'---'}}</td>
+			<td style="border: 2px solid #000;">{{$index+1}}</td>
+			<td style="border: 2px solid #000;">{{$student->lrn}}</td>
+			<td style="border: 2px solid #000;">{{"{$student->lname}, {$student->fname} {$student->mname}"}}</td>
+			<td style="border: 2px solid #000;">{{$student->additional_info? $student->additional_info->gender:'---'}}</td>
+			<td style="border: 2px solid #000;">{{$student->additional_info? $student->additional_info->birthdate:'---'}}</td>
+			<td style="border: 2px solid #000;">{{$student->additional_info? $student->additional_info->age_of_first_friday_june:'---'}}</td>
+			<td style="border: 2px solid #000;">{{$student->additional_info? $student->additional_info->mother_tounge:'---'}}</td>
+			<td style="border: 2px solid #000;">{{$student->additional_info? $student->additional_info->ip:'---'}}</td>
+			<td style="border: 2px solid #000;">{{$student->additional_info? $student->additional_info->religion:'---'}}</td>
+			<td style="border: 2px solid #000;">{{$student->additional_info? $student->additional_info->house_street:'---'}}</td>
+			<td style="border: 2px solid #000;">{{$student->additional_info? $student->additional_info->barangay:'---'}}</td>
+			<td style="border: 2px solid #000;">{{$student->additional_info? $student->additional_info->municipality:'---'}}</td>
+			<td style="border: 2px solid #000;">{{$student->additional_info? $student->additional_info->province:'---'}}</td>
+			<td style="border: 2px solid #000;">{{$student->additional_info? $student->additional_info->fathers_name:'---'}}</td>
+			<td style="border: 2px solid #000;">{{$student->additional_info? $student->additional_info->mothers_name:'---'}}</td>
+			<td style="border: 2px solid #000;">{{$student->additional_info? $student->additional_info->guardian_name:'---'}}</td>
+			<td style="border: 2px solid #000;">{{$student->additional_info? $student->additional_info->relationship:'---'}}</td>
+			<td style="border: 2px solid #000;">{{$student->contact_number}}</td>
+			<td style="border: 2px solid #000;">{{$student->additional_info? $student->additional_info->remarks:'---'}}</td>
 		</tr>
 		@endforeach
 	</table>	

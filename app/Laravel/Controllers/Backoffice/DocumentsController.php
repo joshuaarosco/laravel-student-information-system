@@ -72,15 +72,15 @@ class DocumentsController extends Controller{
 
             $excel->sheet('SF1', function($sheet) {
 
-                $sheet->loadView('excel.school_docs', $this->data);
+                $sheet->loadView('excel.sf1', $this->data);
 
             });
 
-            // $excel->sheet('CONSO', function($sheet) {
+            $excel->sheet('CONSO', function($sheet) {
 
-            //     $sheet->loadView('excel.sf1', $this->data);
+                $sheet->loadView('excel.conso', $this->data);
 
-            // });
+            });
 
         })->export($ext);
 	}
