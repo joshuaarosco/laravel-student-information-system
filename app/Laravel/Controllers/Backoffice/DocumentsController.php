@@ -59,30 +59,39 @@ class DocumentsController extends Controller{
 		return view('backoffice.documents.conso',$this->data);
 	}
 
-	public function school_data(){
+	public function school_data($id = 0){
 		$date = Carbon::now();
 
 		$ext = "xls";
 
-		$this->data['students'] = Student::orderBy('lname')->get();
+		$class = ClassList::where('section_id',$id)->first()? : new ClassList;
+
+		$students_ids = explode(', ',$class->students_ids);
+		$subject_ids = explode(', ',$class->subject_ids);
+
+		$this->data['students'] = Student::whereIn('id',$students_ids)->orderBy('lname')->get();
+		$this->data['subjects'] = Subject::whereIn('id',$subject_ids)->get();
 
         $filename = "School Data-".Helper::date_format(Carbon::now(),'Y-m-d');
 
         Excel::create($filename, function($excel) {
 
             $excel->sheet('SF1', function($sheet) {
-
                 $sheet->loadView('excel.sf1', $this->data);
 
             });
 
             $excel->sheet('CONSO', function($sheet) {
-
                 $sheet->loadView('excel.conso', $this->data);
 
             });
 
         })->export($ext);
+	}
+
+	public function school_document(){
+		$this->data['sections'] = Section::orderBy('created_at',"DESC")->get();
+		return view('backoffice.documents.sections',$this-> data);
 	}
 
 }

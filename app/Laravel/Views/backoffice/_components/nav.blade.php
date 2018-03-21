@@ -74,8 +74,8 @@
                         
                         {{-- <li class="divider">School Documents</li> --}}
 
-                        <li class="{{ active_class(if_route(['backoffice.documents.school_data']), 'active') }}">
-                            <a href="{{route('backoffice.documents.school_data')}}"><i class="icon fa fa-file-text"></i><span>Generate School Documents</span></a>
+                        <li class="{{ active_class(if_route(['backoffice.documents.school_document']), 'active') }}">
+                            <a href="{{route('backoffice.documents.school_document')}}"><i class="icon fa fa-file-text-o"></i><span>School Documents</span></a>
                         </li>
 
                         {{-- <li class="{{ active_class(if_route(['backoffice.documents.generate_conso']), 'active') }}">
