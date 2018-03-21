@@ -185,7 +185,7 @@ class StudentController extends Controller{
 	}
 
 	public function update_student_additional_information($id,$request){
-		$student_information = StudentInformation::find($id)? : new StudentInformation;
+		$student_information = StudentInformation::where('student_id',$id)->first()? : new StudentInformation;
 		$student_information->fill($request->all());
 		$student_information->student_id = $id;
 		$student_information->save();

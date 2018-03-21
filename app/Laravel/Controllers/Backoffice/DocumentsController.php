@@ -59,12 +59,14 @@ class DocumentsController extends Controller{
 		return view('backoffice.documents.conso',$this->data);
 	}
 
-	public function generate_sf1(){
+	public function school_data(){
 		$date = Carbon::now();
 
 		$ext = "xls";
 
-        $filename = "SF1 :";
+		$this->data['students'] = Student::orderBy('lname')->get();
+
+        $filename = "School Data-".Helper::date_format(Carbon::now(),'Y-m-d');
 
         Excel::create($filename, function($excel) {
 
@@ -74,23 +76,11 @@ class DocumentsController extends Controller{
 
             });
 
-        })->export($ext);
-	}
+            // $excel->sheet('CONSO', function($sheet) {
 
-	public function generate_conso(){
-		$date = Carbon::now();
+            //     $sheet->loadView('excel.sf1', $this->data);
 
-		$ext = "xls";
-
-        $filename = "CONSO :";
-
-        Excel::create($filename, function($excel) {
-
-            $excel->sheet('CONSO', function($sheet) {
-
-                $sheet->loadView('excel.conso', $this->data);
-
-            });
+            // });
 
         })->export($ext);
 	}

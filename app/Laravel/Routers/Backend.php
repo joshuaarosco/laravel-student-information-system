@@ -114,6 +114,8 @@ Route::group(
 				$this->get('sf1',['as' => "sf1", 'uses' => "DocumentsController@sf1"]);
 				$this->get('sf1/{id}',['as' => "sf1_view", 'uses' => "DocumentsController@sf1_view"]);
 				$this->get('conso',['as' => "conso", 'uses' => "DocumentsController@conso"]);
+
+				$this->get('school-data',['as' => "school_data", 'uses' => "DocumentsController@school_data"]);
 			});
 
 		});
