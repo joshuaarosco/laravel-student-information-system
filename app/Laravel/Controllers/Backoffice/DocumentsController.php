@@ -21,7 +21,7 @@ use App\Laravel\Models\ClassList;
 *
 * Classes used for this controller
 */
-use Helper, Carbon, Session, Str, DB, Auth, PDF;
+use Helper, Carbon, Session, Str, DB, Auth, PDF, Excel;
 
 class DocumentsController extends Controller{
 
@@ -60,11 +60,39 @@ class DocumentsController extends Controller{
 	}
 
 	public function generate_sf1(){
-		
+		$date = Carbon::now();
+
+		$ext = "xls";
+
+        $filename = "SF1 :";
+
+        Excel::create($filename, function($excel) {
+
+            $excel->sheet('SF1', function($sheet) {
+
+                $sheet->loadView('excel.sf1', $this->data);
+
+            });
+
+        })->export($ext);
 	}
 
 	public function generate_conso(){
-		
+		$date = Carbon::now();
+
+		$ext = "xls";
+
+        $filename = "CONSO :";
+
+        Excel::create($filename, function($excel) {
+
+            $excel->sheet('CONSO', function($sheet) {
+
+                $sheet->loadView('excel.conso', $this->data);
+
+            });
+
+        })->export($ext);
 	}
 
 }

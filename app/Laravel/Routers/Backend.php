@@ -70,6 +70,7 @@ Route::group(
 				$this->post('create',['uses' => "StudentController@store"]);
 				$this->get('edit/{id?}',['as' => "edit", 'uses' => "StudentController@edit"]);
 				$this->post('edit/{id?}',['uses' => "StudentController@update"]);
+				$this->get('view/{id?}',['as' => "view", 'uses' => "StudentController@view"]);
 				$this->any('delete/{id?}',['as' => "destroy", 'uses' => "StudentController@destroy"]);
 			});
 
