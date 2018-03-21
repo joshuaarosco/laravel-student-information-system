@@ -72,7 +72,7 @@ class DocumentsController extends Controller{
 
             $excel->sheet('SF1', function($sheet) {
 
-                $sheet->loadView('excel.sf1', $this->data);
+                $sheet->loadView('excel.school_docs', $this->data);
 
             });
 
