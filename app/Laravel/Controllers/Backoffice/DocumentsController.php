@@ -39,6 +39,12 @@ class DocumentsController extends Controller{
 		$this->data['page_title'] = "School Documents";
 		$this->data['page_description'] = "This is the general information about ".$this->data['page_title'].".";
 		$this->data['route_file'] = "documents";
+
+		$scores = [99,97,99];
+
+		foreach ($scores as $key => $value) {
+			
+		}
 	}
 
 	public function sf1 () {

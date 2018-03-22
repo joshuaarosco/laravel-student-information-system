@@ -109,7 +109,7 @@
 			?>
 			@endforeach
 			<td style="border: 3px solid #000; font-size: 12px; padding: 10px; text-align: center; width: 10px;"><strong>{{round(array_sum($first_grading)/count($first_grading),2)}}</strong></td>
-			<td style="border: 3px solid #000; font-size: 12px; padding: 10px; text-align: center; width: 10px;"><strong></strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; padding: 10px; text-align: center; width: 10px;"><strong>{{Helper::ranking_system($section->id,)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; padding: 10px; text-align: center; width: 10px;"><strong>{{round(array_sum($second_grading)/count($second_grading),2)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; padding: 10px; text-align: center; width: 10px;"><strong></strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; padding: 10px; text-align: center; width: 10px;"><strong>{{round(array_sum($third_grading)/count($third_grading),2)}}</strong></td>
