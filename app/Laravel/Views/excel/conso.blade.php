@@ -77,13 +77,7 @@
 			<td style="border: 3px solid #000; font-size: 12px;">{{$index+1}}</td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;">{{$student->lrn}}</td>
 			<td style="border: 3px solid #000; font-size: 12px;">{{"{$student->lname}, {$student->fname} {$student->mname}"}}</td>
-			<?php
-				$first_grading = [];
-				$second_grading = [];
-				$third_grading = [];
-				$fourth_grading = [];
-				$average = [];
-			?>
+			
 			@foreach($subjects as $index => $subject)
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;">
 				<strong>{{$subject->encode_grade($section->id,$subject->id,$student->id)->first_grading}}</strong>
@@ -100,13 +94,6 @@
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;">
 				<strong>{{$subject->encode_grade($section->id,$subject->id,$student->id)->average}}</strong>
 			</td>
-			<?php
-				array_push($first_grading,$subject->encode_grade($section->id,$subject->id,$student->id)->first_grading);
-				array_push($second_grading,$subject->encode_grade($section->id,$subject->id,$student->id)->second_grading);
-				array_push($third_grading,$subject->encode_grade($section->id,$subject->id,$student->id)->third_grading);
-				array_push($fourth_grading,$subject->encode_grade($section->id,$subject->id,$student->id)->fourth_grading);
-				array_push($average,$subject->encode_grade($section->id,$subject->id,$student->id)->average);
-			?>
 			@endforeach
 			{{-- <td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($first_grading)/count($first_grading)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
