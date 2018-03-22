@@ -7,7 +7,7 @@
 			<td>&nbsp;</td>
 		</tr>
 	</table>
-	<table>
+	{{-- <table>
 		<tr>
 			<td style="border: 3px solid #000; font-size: 12px; padding: 10px;" rowspan="5"></td>
 			<td style="border: 3px solid #000; font-size: 12px; padding: 10px; width: 20%;" rowspan="5"><center style="text-align: center;" >LRN</center></td>
@@ -131,6 +131,6 @@
 			<td style="border: 3px solid #000; font-size: 12px; padding: 10px; text-align: center; width: 10px;"><strong></strong></td>
 		</tr>
 		@endforeach
-	</table>
+	</table> --}}
 </body>
 </html>
