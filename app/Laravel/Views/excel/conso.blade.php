@@ -108,26 +108,26 @@
 				array_push($average,round($subject->encode_grade($section->id,$subject->id,$student->id)->average,2));
 			?>
 			@endforeach
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($first_grading)/count($first_grading),2)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($first_grading)/count($first_grading)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($second_grading)/count($second_grading),2)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($second_grading)/count($second_grading)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($third_grading)/count($third_grading),2)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($third_grading)/count($third_grading)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($fourth_grading)/count($fourth_grading),2)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($fourth_grading)/count($fourth_grading)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($average)/count($average),2)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($average)/count($average)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
 
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($first_grading)/count($first_grading),0)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($first_grading)/count($first_grading)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($second_grading)/count($second_grading),0)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($second_grading)/count($second_grading)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($third_grading)/count($third_grading),0)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($third_grading)/count($third_grading)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($fourth_grading)/count($fourth_grading),0)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($fourth_grading)/count($fourth_grading)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($average)/count($average),0)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($average)/count($average)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
 		</tr>
 		@endforeach
