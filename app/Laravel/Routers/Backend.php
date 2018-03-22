@@ -70,6 +70,7 @@ Route::group(
 				$this->post('create',['uses' => "StudentController@store"]);
 				$this->get('edit/{id?}',['as' => "edit", 'uses' => "StudentController@edit"]);
 				$this->post('edit/{id?}',['uses' => "StudentController@update"]);
+				$this->get('view/{id?}',['as' => "view", 'uses' => "StudentController@view"]);
 				$this->any('delete/{id?}',['as' => "destroy", 'uses' => "StudentController@destroy"]);
 			});
 
@@ -103,10 +104,19 @@ Route::group(
 			$this->group(['prefix' => "advisory-class", 'as' => "advisory_class."], function () {
 				$this->get('/',['as' => "index", 'uses' => "AdvisoryClassController@index"]);
 				$this->get('students/{id}',['as' => "students", 'uses' => "AdvisoryClassController@students"]);
+				$this->get('student/{id}',['as' => "student_info", 'uses' => "AdvisoryClassController@student_info"]);
+				$this->get('grades/{id}',['as' => "grades", 'uses' => "AdvisoryClassController@grades"]);
 			});
 
 			$this->group(['prefix' => "documents", 'as' => "documents."], function () {
+				$this->get('generate-sf1',['as' => "generate_sf1", 'uses' => "DocumentsController@generate_sf1"]);
+				$this->get('generate-conso',['as' => "generate_conso", 'uses' => "DocumentsController@generate_conso"]);
 				$this->get('sf1',['as' => "sf1", 'uses' => "DocumentsController@sf1"]);
+				$this->get('sf1/{id}',['as' => "sf1_view", 'uses' => "DocumentsController@sf1_view"]);
+				$this->get('conso',['as' => "conso", 'uses' => "DocumentsController@conso"]);
+
+				$this->get('school-document',['as' => "school_document", 'uses' => "DocumentsController@school_document"]);
+				$this->get('school-data/{id}',['as' => "school_data", 'uses' => "DocumentsController@school_data"]);
 			});
 
 		});

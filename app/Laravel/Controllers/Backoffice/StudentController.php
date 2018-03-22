@@ -18,7 +18,7 @@ use App\Laravel\Requests\Backoffice\StudentRequest;
 * Classes used for this controller
 */
 use App\Http\Requests\Request;
-use Input, Helper, Carbon, Session, Str, File, Image, ImageUploader;
+use Input, Helper, Carbon, Session, Str, File, Image, ImageUploader, PDF;
 
 class StudentController extends Controller{
 
@@ -185,10 +185,16 @@ class StudentController extends Controller{
 	}
 
 	public function update_student_additional_information($id,$request){
-		$student_information = StudentInformation::find($id)? : new StudentInformation;
+		$student_information = StudentInformation::where('student_id',$id)->first()? : new StudentInformation;
 		$student_information->fill($request->all());
 		$student_information->student_id = $id;
 		$student_information->save();
+	}
+
+	public function view($id = 0){
+		$this->data['student'] = Student::find($id);
+		$pdf = PDF::loadView('dompdf.stud_info', $this->data);
+		return $pdf->stream('dompdf.stud_info');
 	}
 
 }

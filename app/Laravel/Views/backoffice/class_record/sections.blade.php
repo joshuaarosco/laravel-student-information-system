@@ -41,14 +41,15 @@
                                         <td>{{$info->section_name}}</td>
                                         <td>{{"{$info->adviser->lname}, {$info->adviser->fname}"}}</td>
                                         <td class="actions">
-                                            <div class="btn-group btn-hspace">
+                                            {{-- <div class="btn-group btn-hspace">
                                                 <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="icon-dropdown mdi mdi-chevron-down"></span></button>
                                                 <ul role="menu" class="dropdown-menu pull-right">
                                                     <li>
-                                                        <a href="{{route('backoffice.'.$route_file.'.encode',['section_id' => $info->id, 'subject_id' => $subject->id])}}">Encode Grade</a>
+                                                        
                                                     </li>
                                                 </ul>
-                                            </div>
+                                            </div> --}}
+                                            <a class="btn btn-primary" href="{{route('backoffice.'.$route_file.'.encode',['section_id' => $info->id, 'subject_id' => $subject->id])}}">Encode Grade</a>
                                         </td>
                                     </tr>
                                     @endforeach

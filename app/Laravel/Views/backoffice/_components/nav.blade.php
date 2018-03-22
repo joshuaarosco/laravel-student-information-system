@@ -11,7 +11,7 @@
                             <a href="{{route('backoffice.dashboard')}}"><i class="icon mdi mdi-home"></i><span>Dashboard</span></a>
                         </li>
 
-                        <li class="divider">Class Management</li>
+                        <li class="divider">School Management</li>
 
                         @if(in_array(Auth::user()->type, ['teacher']))
                         <li class="{{ active_class(if_route(['backoffice.class_record.index']), 'active') }}">
@@ -72,11 +72,22 @@
                             </ul>
                         </li>
                         
-                        <li class="divider">School Documents</li>
-                        
-                        <li class="{{ active_class(if_route(['backoffice.documents.sf1']), 'active') }}">
-                            <a href="{{route('backoffice.documents.sf1')}}"><i class="icon fa fa-file-text"></i><span>School Form 1 (SF1)</span></a>
+                        {{-- <li class="divider">School Documents</li> --}}
+
+                        <li class="{{ active_class(if_route(['backoffice.documents.school_document']), 'active') }}">
+                            <a href="{{route('backoffice.documents.school_document')}}"><i class="icon fa fa-file-text-o"></i><span>School Documents</span></a>
                         </li>
+
+                        {{-- <li class="{{ active_class(if_route(['backoffice.documents.generate_conso']), 'active') }}">
+                            <a href="{{route('backoffice.documents.generate_conso')}}"><i class="icon fa fa-file-text-o"></i><span>Consolidated</span></a>
+                        </li> --}}
+                        {{-- <li class="{{ active_class(if_route(['backoffice.documents.sf1']), 'active') }}">
+                            <a href="{{route('backoffice.documents.sf1')}}"><i class="icon fa fa-file-text-o"></i><span>School Form 1 (SF1)</span></a>
+                        </li> --}}
+                        
+                        {{-- <li class="{{ active_class(if_route(['backoffice.documents.conso']), 'active') }}">
+                            <a href="{{route('backoffice.documents.conso')}}"><i class="icon fa fa-file-text-o"></i><span>Conso</span></a>
+                        </li> --}}
         
                         <li class="divider">User Management</li>
                         <li class="parent {{ active_class(if_route(['backoffice.teachers.index','backoffice.teachers.create','backoffice.teachers.edit','backoffice.teachers.destroy',]), 'active open') }}">

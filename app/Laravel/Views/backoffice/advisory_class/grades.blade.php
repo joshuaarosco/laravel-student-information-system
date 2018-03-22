@@ -3,7 +3,7 @@
 @section('content')
 <div class="be-content">
         <div class="page-head">
-            <h2 class="page-head-title">Class Record</h2>
+            <h2 class="page-head-title"><strong>{{$section->section_name}}</strong> - Sy. {{$section->school_year}}</h2>
             <ol class="breadcrumb page-head-nav">
                 <li>
                     <a href="{{route('backoffice.dashboard')}}">Home</a>
@@ -17,10 +17,10 @@
                     @include('backoffice._components.notification')
                     <div class="panel panel-default panel-table">
                         <div class="panel-heading">
-                            Class Record
-                            <div class="tools dropdown">
+                            <strong>{{$section->section_name}}</strong> - Sy. {{$section->school_year}}
+                            {{-- <div class="tools dropdown">
                                 <a href="{{route('backoffice.'.$route_file.'.create')}}"><span class="icon mdi mdi-plus"></span></a>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="panel-body">
                             <table class="table table-striped table-hover table-fw-widget table-reponsive" id="table1">
@@ -36,7 +36,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                	@foreach($students as $index => $student)
+                                    @foreach($students as $index => $student)
                                     <tr class="odd gradeX">
                                         <td>{{$index+1}}</td>
                                         <td><strong>{{$student->lrn}}</strong></td>
@@ -63,24 +63,24 @@
 
 @section('page-modals')
 <div id="md-footer-danger" tabindex="-1" role="dialog" class="modal fade">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="mdi mdi-close"></span></button>
-			</div>
-			<div class="modal-body">
-				<div class="text-center">
-					<div class="text-danger"><span class="modal-main-icon mdi mdi-close-circle-o"></span></div>
-					<h3>Danger!</h3>
-					<p>This action can not be undone.<br>You are about to delete a record, this action can no longer be undone,<br> are you sure you want to proceed?</p>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
-				<a type="button" class="btn btn-danger" id="btn-confirm-delete">Proceed</a>
-			</div>
-		</div>
-	</div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="mdi mdi-close"></span></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="text-danger"><span class="modal-main-icon mdi mdi-close-circle-o"></span></div>
+                    <h3>Danger!</h3>
+                    <p>This action can not be undone.<br>You are about to delete a record, this action can no longer be undone,<br> are you sure you want to proceed?</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
+                <a type="button" class="btn btn-danger" id="btn-confirm-delete">Proceed</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 @foreach($subjects as $data => $subject)

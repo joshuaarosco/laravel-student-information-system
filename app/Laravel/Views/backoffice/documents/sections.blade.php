@@ -3,7 +3,7 @@
 @section('content')
 <div class="be-content">
         <div class="page-head">
-            <h2 class="page-head-title">List of {{$page_title}}</h2>
+            <h2 class="page-head-title">List of Sections</h2>
             <ol class="breadcrumb page-head-nav">
                 <li>
                     <a href="{{route('backoffice.dashboard')}}">Home</a>
@@ -17,10 +17,7 @@
                     @include('backoffice._components.notification')
                     <div class="panel panel-default panel-table">
                         <div class="panel-heading">
-                            My {{$page_title}}
-                            <div class="tools dropdown">
-                                {{-- <a href="{{route('backoffice.'.$route_file.'.create')}}"><span class="icon mdi mdi-plus"></span></a> --}}
-                            </div>
+                            Choose a section
                         </div>
                         <div class="panel-body">
                             <table class="table table-striped table-hover table-fw-widget" id="table1">
@@ -28,32 +25,31 @@
                                     <tr>
                                         <th style="width: 5%;">#</th>
                                         <th>School Year</th>
-                                        <th>Section</th>
-                                        <th>Number Of Students</th>
-                                        <th class="actions" style="width: 10%;"></th>
+                                        <th>Section Name</th>
+                                        <th>Adviser</th>
+                                        <th class="actions" width="10%"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                	@foreach($advisory_classes as $index => $info)
+                                	@foreach($sections as $index => $info)
                                     <tr class="odd gradeX">
-                                        <td>{{ $index+1 }}</td>
-                                        <td><strong>{{ $info->school_year }}</strong></td>
-                                        <td>{{ $info->section_name }}</td>
-                                        <td>{{ $info->number_of_students($info->id)? count(explode(', ',$info->number_of_students($info->id)->student_ids)) : '---'}}</td>
+                                        <td>{{$index+1}}</td>
+                                        <td><strong>{{$info->school_year}}</strong></td>
+                                        <td>{{$info->section_name}}</td>
+                                        <td>{{"{$info->adviser->lname}, {$info->adviser->fname}"}}</td>
                                         <td class="actions">
-                                            @if($info->number_of_students($info->id))
-                                           <div class="btn-group btn-hspace">
-                                              <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="icon-dropdown mdi mdi-chevron-down"></span></button>
-                                                <ul role="menu" class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="{{route('backoffice.'.$route_file.'.students',$info->id)}}">View Students</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{route('backoffice.'.$route_file.'.grades',$info->id)}}">View Grades</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            @endif
+                                            <a href="{{route('backoffice.documents.school_data',$info->id)}}" target="_blank" class="btn btn-success">Generate School Forms</a>
+                                        	{{-- <div class="btn-group btn-hspace">
+                                        		<button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Action <span class="icon-dropdown mdi mdi-chevron-down"></span></button>
+                                        		<ul role="menu" class="dropdown-menu pull-right">
+                                        			<li>
+                                        				<a href="{{route('backoffice.'.$route_file.'.edit',$info->id)}}">Edit</a>
+                                        			</li>
+                                        			<li>
+                                        				<a href="#" data-toggle="modal" data-url="{{route('backoffice.'.$route_file.'.destroy',[$info->id])}}" data-target="#md-footer-danger" class="action-delete">Delete</a>
+                                        			</li>
+                                        		</ul>
+                                        	</div> --}}
                                         </td>
                                     </tr>
                                     @endforeach

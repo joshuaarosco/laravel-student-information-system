@@ -9,6 +9,7 @@ namespace App\Laravel\Controllers\Backoffice;
 use App\Laravel\Models\User;
 use App\Laravel\Models\Student;
 use App\Laravel\Models\Section;
+use App\Laravel\Models\Subject;
 use App\Laravel\Models\ClassList;
 
 /*
@@ -21,7 +22,7 @@ use App\Laravel\Models\ClassList;
 *
 * Classes used for this controller
 */
-use Helper, Carbon, Session, Str, DB, Auth;
+use Helper, Carbon, Session, Str, DB, Auth, PDF;
 
 class AdvisoryClassController extends Controller{
 
@@ -58,10 +59,35 @@ class AdvisoryClassController extends Controller{
 		}
 
 		$student_ids = explode(', ',$class->student_ids);
-
 		$this->data['students'] = Student::whereIn('id',$student_ids)->orderBy('lname')->get();
 		$this->data['section'] = $section;
 		return view('backoffice.advisory_class.students',$this->data);
 	}
 
+	public function grades($id){
+		$section = Section::find($id);
+		$class = ClassList::where('section_id',$id)->first();
+
+		if(!$class){
+			Session::flash('notification-status','failed');
+			Session::flash('notification-msg',"Class not found.");
+			return redirect()->back();
+		}
+
+		$student_ids = explode(', ',$class->student_ids);
+		$exploded_subject_ids = explode(', ',$class->subject_ids);
+
+		$this->data['students'] = Student::whereIn('id',$student_ids)->orderBy('lname')->get();
+		$this->data['subjects'] = Subject::whereIn('id',$exploded_subject_ids)->get();
+
+		$this->data['class'] = $class;
+		$this->data['section'] = $section;
+		return view('backoffice.advisory_class.grades',$this->data);
+	}
+
+	public function student_info($id = 0){
+		$this->data['student'] = Student::find($id);
+		$pdf = PDF::loadView('dompdf.stud_info', $this->data);
+		return $pdf->stream('dompdf.stud_info');
+	}
 }

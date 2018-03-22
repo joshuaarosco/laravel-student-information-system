@@ -77,7 +77,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group {{$errors->first('birthdate') ? 'has-error' : NULL}} xs-pt-10">
                                             <label class="control-label">Birthdate</label> 
-                                            <input type="text" name="birthddate" value="{{old('birthdate')}}" placeholder="mm/dd/yyyy" class="form-control input-sm">
+                                            <input type="text" name="birthdate" value="{{old('birthdate')}}" placeholder="mm/dd/yyyy" class="form-control input-sm">
                                             @if($errors->first('birthdate'))
                                             <span class="help-block">{!!$errors->first('birthdate')!!}</span>
                                             @endif

@@ -2,52 +2,56 @@
 
 @section('content')
 <div class="be-content">
-        <div class="page-head">
-            <h2 class="page-head-title"><strong>{{$section->section_name}}</strong></h2>
-            <ol class="breadcrumb page-head-nav">
-                <li>
-                    <a href="{{route('backoffice.dashboard')}}">Home</a>
-                </li>
-                <li class="active">All Records</li>
-            </ol>
-        </div>
-        <div class="main-content container-fluid">
-            <div class="row">
-                <div class="col-sm-12">
-                    @include('backoffice._components.notification')
-                    <div class="panel panel-default panel-table">
-                        <div class="panel-heading">
-                            Students of <strong>{{$section->section_name}}</strong>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-striped table-hover table-fw-widget" id="table1">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 5%;">#</th>
-                                        <th>LRN</th>
-                                        <th>Name</th>
-                                        <th>Contact Number</th>
-                                        <th>Address</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                	@foreach($students as $index => $info)
-                                    <tr class="odd gradeX">
-                                        <td>{{$index+1}}</td>
-                                        <td><strong>{{$info->lrn}}</strong></td>
-                                        <td>{{"{$info->lname}, {$info->fname}, {$info->mname}"}}</td>
-                                        <td>{{$info->contact_number? : '---'}}</td>
-                                        <td>{{$info->address? : '---'}}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+    <div class="page-head">
+        <h2 class="page-head-title"><strong>{{$section->section_name}}</strong></h2>
+        <ol class="breadcrumb page-head-nav">
+            <li>
+                <a href="{{route('backoffice.dashboard')}}">Home</a>
+            </li>
+            <li class="active">All Records</li>
+        </ol>
+    </div>
+    <div class="main-content container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                @include('backoffice._components.notification')
+                <div class="panel panel-default panel-table">
+                    <div class="panel-heading">
+                        Students of <strong>{{$section->section_name}}</strong>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-striped table-hover table-fw-widget" id="table1">
+                            <thead>
+                                <tr>
+                                    <th style="width: 5%;">#</th>
+                                    <th>LRN</th>
+                                    <th>Name</th>
+                                    <th>Contact Number</th>
+                                    <th>Address</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            	@foreach($students as $index => $info)
+                                <tr class="odd gradeX">
+                                    <td>{{$index+1}}</td>
+                                    <td><strong>{{$info->lrn}}</strong></td>
+                                    <td>{{"{$info->lname}, {$info->fname}, {$info->mname}"}}</td>
+                                    <td>{{$info->contact_number? : '---'}}</td>
+                                    <td>{{$info->address? : '---'}}</td>
+                                    <td>
+                                        <a href="{{route('backoffice.advisory_class.student_info',$info->id)}}" target="_blank" class="btn btn-info">View Info</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @stop
 
 @section('page-modals')
