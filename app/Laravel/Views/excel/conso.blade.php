@@ -77,45 +77,58 @@
 			<td style="border: 3px solid #000; font-size: 12px;">{{$index+1}}</td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;">{{$student->lrn}}</td>
 			<td style="border: 3px solid #000; font-size: 12px;">{{"{$student->lname}, {$student->fname} {$student->mname}"}}</td>
-			
+			<?php
+				$first_grading = [];
+				$second_grading = [];
+				$third_grading = [];
+				$fourth_grading = [];
+				$average = [];
+			?>
 			@foreach($subjects as $index => $subject)
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;">
-				<strong>{{$subject->encode_grade($section->id,$subject->id,$student->id)->first_grading}}</strong>
+				<strong>{{round($subject->encode_grade($section->id,$subject->id,$student->id)?$subject->encode_grade($section->id,$subject->id,$student->id)->first_grading:0,2)}}</strong>
 			</td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;">
-				<strong>{{$subject->encode_grade($section->id,$subject->id,$student->id)->second_grading}}</strong>
+				<strong>{{round($subject->encode_grade($section->id,$subject->id,$student->id)?$subject->encode_grade($section->id,$subject->id,$student->id)->second_grading:0,2)}}</strong>
 			</td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;">
-				<strong>{{$subject->encode_grade($section->id,$subject->id,$student->id)->third_grading}}</strong>
+				<strong>{{round($subject->encode_grade($section->id,$subject->id,$student->id)?$subject->encode_grade($section->id,$subject->id,$student->id)->third_grading:0,2)}}</strong>
 			</td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;">
-				<strong>{{$subject->encode_grade($section->id,$subject->id,$student->id)->fourth_grading}}</strong>
+				<strong>{{round($subject->encode_grade($section->id,$subject->id,$student->id)?$subject->encode_grade($section->id,$subject->id,$student->id)->fourth_grading:0,2)}}</strong>
 			</td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;">
-				<strong>{{$subject->encode_grade($section->id,$subject->id,$student->id)->average}}</strong>
+				<strong>{{round($subject->encode_grade($section->id,$subject->id,$student->id)?$subject->encode_grade($section->id,$subject->id,$student->id)->average:0,2)}}</strong>
 			</td>
+			<?php
+				array_push($first_grading,round($subject->encode_grade($section->id,$subject->id,$student->id)?$subject->encode_grade($section->id,$subject->id,$student->id)->first_grading:0,2));
+				array_push($second_grading,round($subject->encode_grade($section->id,$subject->id,$student->id)?$subject->encode_grade($section->id,$subject->id,$student->id)->second_grading:0,2));
+				array_push($third_grading,round($subject->encode_grade($section->id,$subject->id,$student->id)?$subject->encode_grade($section->id,$subject->id,$student->id)->third_grading:0,2));
+				array_push($fourth_grading,round($subject->encode_grade($section->id,$subject->id,$student->id)?$subject->encode_grade($section->id,$subject->id,$student->id)->fourth_grading:0,2));
+				array_push($average,round($subject->encode_grade($section->id,$subject->id,$student->id)?$subject->encode_grade($section->id,$subject->id,$student->id)->average:0,2));
+			?>
 			@endforeach
-			{{-- <td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($first_grading)/count($first_grading)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($first_grading)/count($first_grading),2)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($second_grading)/count($second_grading)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($second_grading)/count($second_grading),2)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($third_grading)/count($third_grading)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($third_grading)/count($third_grading),2)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($fourth_grading)/count($fourth_grading)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($fourth_grading)/count($fourth_grading),2)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($average)/count($average)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($average)/count($average),2)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
 
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($first_grading)/count($first_grading)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($first_grading)/count($first_grading),0)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($second_grading)/count($second_grading)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($second_grading)/count($second_grading),0)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($third_grading)/count($third_grading)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($third_grading)/count($third_grading),0)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($fourth_grading)/count($fourth_grading)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($fourth_grading)/count($fourth_grading),0)}}</strong></td>
 			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{array_sum($average)/count($average)}}</strong></td>
-			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td> --}}
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong>{{round(array_sum($average)/count($average),0)}}</strong></td>
+			<td style="border: 3px solid #000; font-size: 12px; text-align: center;"><strong></strong></td>
 		</tr>
 		@endforeach
 	</table>
