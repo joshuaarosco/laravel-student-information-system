@@ -3,7 +3,7 @@
 @section('content')
 <div class="be-content">
         <div class="page-head">
-            <h2 class="page-head-title">List of {{$page_title}}</h2>
+            <h2 class="page-head-title">List of Sections</h2>
             <ol class="breadcrumb page-head-nav">
                 <li>
                     <a href="{{route('backoffice.dashboard')}}">Home</a>

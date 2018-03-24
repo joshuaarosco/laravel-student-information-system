@@ -16,6 +16,15 @@ class Controller extends MainController{
 		self::set_date_today();
 		self::set_current_route();
 		self::set_default_page_title();
+
+		// $age = array("1"=>"35", "2"=>"95", "3"=>"43");
+		// arsort($age);
+
+		// foreach($age as $x => $x_value) {
+		// 	echo "Key=" . $x . ", Value=" . $x_value;
+		// 	echo "<br>";
+		// }
+		// dd('im here');
 	}
 
 	public function set_user_info(){

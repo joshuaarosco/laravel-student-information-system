@@ -9,6 +9,7 @@ namespace App\Laravel\Controllers\Backoffice;
 use App\Laravel\Models\User;
 use App\Laravel\Models\Student;
 use App\Laravel\Models\Section;
+use App\Laravel\Models\Subject;
 use App\Laravel\Models\ClassList;
 
 /*
@@ -61,16 +62,16 @@ class DocumentsController extends Controller{
 
 	public function school_data($id = 0){
 		$date = Carbon::now();
-
 		$ext = "xls";
 
 		$class = ClassList::where('section_id',$id)->first()? : new ClassList;
 
-		$students_ids = explode(', ',$class->students_ids);
+		$student_ids = explode(', ',$class->student_ids);
 		$subject_ids = explode(', ',$class->subject_ids);
 
-		$this->data['students'] = Student::whereIn('id',$students_ids)->orderBy('lname')->get();
+		$this->data['students'] = Student::whereIn('id',$student_ids)->orderBy('lname')->get();
 		$this->data['subjects'] = Subject::whereIn('id',$subject_ids)->get();
+		$this->data['section'] = Section::find($id);
 
         $filename = "School Data-".Helper::date_format(Carbon::now(),'Y-m-d');
 

@@ -240,4 +240,8 @@ class Helper {
 		return $bytes;
 	}
 
+	public static function ranking_system($points,$user_id){
+		
+	}
+
 }
